@@ -11,6 +11,7 @@ class _Login_PageState extends State<Login_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -29,12 +30,16 @@ class _Login_PageState extends State<Login_Page> {
                 children: [
                   TextField(
                     decoration: InputDecoration(
-                      fillColor: Colors.grey.shade100,
+                      fillColor: Colors.grey.shade200,
                       filled: true,
                       hintText: 'Email',
+                     hintStyle: TextStyle(color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                      focusedBorder:OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey)
+                      )
                     ),
                   ),
                   SizedBox(
@@ -43,19 +48,37 @@ class _Login_PageState extends State<Login_Page> {
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
-                      fillColor: Colors.grey.shade100,
+                      fillColor: Colors.grey.shade200,
                       filled: true,
                       hintText: 'Password',
+                      hintStyle: TextStyle(color: Colors.grey),
                       suffix: Icon(Icons.remove_red_eye_outlined),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                        focusedBorder:OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)
+                        )
                     ),
                   ),
-                  SizedBox(
-                    height: 40,
+
+                  Padding(
+                    padding: const EdgeInsets.only(left:165),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Forget Password',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize:14,
+                        ),
+                      ),
+                    ),
                   ),
-                  Row(
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -66,53 +89,24 @@ class _Login_PageState extends State<Login_Page> {
                           color: Color(0xFF4c505b),
                         ),
                       ),
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color(0xFF4c505b),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('/start');
-                          },
-                          icon: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                        ),
-                      ),
+
                     ],
                   ),
                   SizedBox(height: 40,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Forget Password',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
+
+
                 ],
               ),
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: 
+        () {
+          Navigator.of(context).pushNamed('/start');
+        },child: Icon(Icons.arrow_forward,color: Colors.white,),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        backgroundColor:Color(0xFF4c505b),
       ),
     );
   }
