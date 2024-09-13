@@ -30,11 +30,8 @@
 //   }
 // }
 
-
-
 import 'package:festivalapp/screen/modal/festModal.dart';
 import 'package:flutter/material.dart';
-
 
 import '../../utils/global.dart';
 
@@ -50,17 +47,20 @@ class ListviewMethod extends StatelessWidget {
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed('/editingpage');
-            img=Images(festivalList[index].img,festivalList[index].name);
+            img = Images(festivalList[index].img, festivalList[index].name);
           },
           child: Card(
-            elevation:8,
+            elevation: 8,
             color: Colors.green.shade100,
             child: ListTile(
-              title: Image(image: AssetImage(FestImgView[index].img),),
+              title: Image(
+                image: AssetImage(FestImgView[index].img),
+              ),
               subtitle: Text(FestImgView[index].name),
             ),
           ),
-        ),),
+        ),
+      ),
     );
   }
 }
