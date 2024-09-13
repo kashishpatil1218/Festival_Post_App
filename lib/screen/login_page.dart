@@ -71,7 +71,7 @@ class _Login_PageState extends State<Login_Page> {
                         backgroundColor: Color(0xFF4c505b),
                         child: IconButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/reg');
+                            Navigator.of(context).pushNamed('/start');
                           },
                           icon: Icon(
                             Icons.arrow_forward,

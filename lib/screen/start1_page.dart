@@ -13,7 +13,7 @@ class Start1_Page extends StatefulWidget {
 class _Start1_PageState extends State<Start1_Page> {
   final myItems = [
     Image.asset('assets/img/bappa.jpg'),
-    Image.asset('assets/img/bappa.jpg'),
+    Image.asset('assets/img/navaratri.jpeg'),
     Image.asset('assets/img/bappa.jpg'),
     Image.asset('assets/img/bappa.jpg'),
     Image.asset('assets/img/bappa.jpg'),
@@ -82,9 +82,9 @@ class _Start1_PageState extends State<Start1_Page> {
                   height: 10,
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(right: 215, top: 10),
+                  padding: EdgeInsets.only(right: 215, top: 10, left: 10),
                   child: Text(
-                    'Nearest Festivals',
+                    'Upcoming Festivals',
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ),
@@ -102,6 +102,27 @@ class _Start1_PageState extends State<Start1_Page> {
                     ],
                   ),
                 ),
+                SizedBox(height: 10,),
+                Padding(
+                  padding: EdgeInsets.only(right: 160, top: 10),
+                  child: Text(
+                    'Popular Templates/ post',
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                ),
+                SizedBox(height: 10,),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      ...List.generate(
+                        templateList.length,
+                        (index) => TempletePost(
+                            img: templateList[index], index: index),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             )
           ],
@@ -113,19 +134,50 @@ class _Start1_PageState extends State<Start1_Page> {
           onTap: () {
             Navigator.of(context).pushNamed('/login');
           },
-          child: Container(
-            height: 50,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.teal,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed('/view');
+            },
+            child: Container(
+              height: 50,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.teal,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
                 child: Text(
-              'Get Start >> ',
-              style: TextStyle(color: Colors.white, fontSize:17),
-            )),
+                  'Get Start >> ',
+                  style: TextStyle(color: Colors.white, fontSize: 17),
+                ),
+              ),
+            ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Padding TempletePost({required String img, required int index}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 150,
+        width: 150,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.shade700,
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(2, 3),)
+          ],
+          image: DecorationImage(
+            image: AssetImage(img),
+            fit: BoxFit.cover,
+          ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
         ),
       ),
     );
@@ -186,8 +238,9 @@ class _Start1_PageState extends State<Start1_Page> {
                     blurRadius: 5,
                     offset: Offset(2, 3))
               ],
+              shape: BoxShape.circle,
               color: Colors.blueGrey,
-              borderRadius: BorderRadius.circular(15),
+              //borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
