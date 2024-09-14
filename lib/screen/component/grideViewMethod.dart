@@ -32,7 +32,7 @@ class GrideviewMethod extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushNamed('/');
+          Navigator.of(context).pushNamed('/edit');
         },
         child: Icon(Icons.edit,color: Colors.white,),
         shape: RoundedRectangleBorder(

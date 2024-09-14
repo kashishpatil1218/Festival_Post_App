@@ -38,6 +38,10 @@ import '../../utils/global.dart';
 class ListviewMethod extends StatelessWidget {
   const ListviewMethod({super.key});
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,12 +63,21 @@ class ListviewMethod extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/edit');
+        },
+        child: Icon(Icons.edit,color: Colors.white,),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        backgroundColor: Colors.teal,
+      ),
     );
   }
 
   Widget ListViewMethod(
       {required String img,
-
         required bool isName ,
       required String logo,
       required int index}) {
