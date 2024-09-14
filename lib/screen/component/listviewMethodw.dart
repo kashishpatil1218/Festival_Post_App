@@ -141,7 +141,7 @@ class ListviewMethod extends StatelessWidget {
                 ),
                 trailing: Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: Icon(Icons.arrow_forward_ios,color: Colors.white,size: 20,),
+                  child: Icon(Icons.edit,color: Colors.white,size: 20,),
                 ),
               ),
             ),

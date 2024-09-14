@@ -14,157 +14,81 @@ class GrideviewMethod extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black87,
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            ...List.generate(
-              festivalList.length,
-              (index) => GridViewMethod(
-                img: festivalList[index]['img'],
-                name: festivalList[index]['name'],
-                logo: festivalList[index]['logo'],
-                index: index,
-              ),
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed('/edit');
-        },
-        child: Icon(Icons.edit,color: Colors.white,),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        backgroundColor: Colors.teal,
-      ),
-    );
-  }
+      body: GridView.builder(
+        itemCount: festivalList.length,
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            child: Stack(children: [
+              GestureDetector(
+                onTap: () {
+                  tempList.add(mainList[index]);
+                  Navigator.of(context).pushNamed('/edit');
 
-  Widget GridViewMethod(
-      {required String img,
-      required String name,
-      required String logo,
-      required int index}) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 20, left: 10),
-          child: Stack(
-            children: [
-              Container(
-                height: 190,
-                width: 180,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    opacity: (0.7),
-                    image: AssetImage(img),
+                },
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black,
+                    image: DecorationImage(
+                      opacity: 0.7,
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        festivalList[index]['img'],
+                      ),
+                    ),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 90,
+                        width: 90,
+                        decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(2, 5))
+                          ],
+                          color: Colors.white,
+                          shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(logo),
+                            image: AssetImage(
+                              festivalList[index]['logo'],
+                            ),
                           ),
-                          color: Colors.white,
-                          shape: BoxShape.circle),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 20, left: 15),
-          child: Stack(
-            children: [
-              Container(
-                height: 190,
-                width: 180,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    opacity: (0.7),
-                    image: AssetImage(img),
+                        ),
+                      ),
+                      // const SizedBox(
+                      //   height: 20,
+                      // ),
+                    ],
                   ),
                 ),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage(logo),
-                          ),
-                          color: Colors.white,
-                          shape: BoxShape.circle),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 10)),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )
-                  ],
-                ),
               ),
-            ],
+            ]),
           ),
         ),
-      ],
+      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //
+      //   },
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(30),
+      //   ),
+      //   backgroundColor: Colors.teal,
+      //   child: const Icon(
+      //     Icons.edit,
+      //     color: Colors.white,
+      //   ),
+      // ),
     );
   }
 }
-// Padding(
-// padding: const EdgeInsets.all(8.0),
-// child: GridView.builder(
-// gridDelegate:
-// SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-// physics: BouncingScrollPhysics(),
-// itemCount: FestImgView.length,
-// itemBuilder: (context, index) => GestureDetector(
-// onTap: () {
-// Navigator.of(context).pushNamed('/editingpage');
-// img = Images(festivalList[index].img, festivalList[index].name);
-// },
-// child: Card(
-// elevation: 8,
-// color: Colors.green.shade100,
-// child: ListTile(
-// title: Image(
-// image: AssetImage(FestImgView[index].img),
-//
-// ),
-// subtitle: Text(FestImgView[index].name),
-// ),
-// ),
-// ),
-// ),
-// );
