@@ -15,21 +15,22 @@ class _Edit_PageState extends State<Edit_Page> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
             tempList.removeLast();
             Navigator.of(context).pop();
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: Color(0xFFE4C804),
+        centerTitle: true,
         title: Text(
           'Edit your Tamplet',
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -43,33 +44,13 @@ class _Edit_PageState extends State<Edit_Page> {
           ),
         ),
       ),
-
-      // body: Padding(
-      //   padding: const EdgeInsets.all(8.0),
-      //   child: Column(
-      //     children: [
-      //       RepaintBoundary(
-      //         key: imgKey,
-      //         child: Card(
-      //           child: Align(
-      //             alignment: Alignment.center,
-      //             child: Container(
-      //               height: 300,
-      //               width: double.infinity,
-      //               padding: EdgeInsets.all(10),
-      //               decoration: BoxDecoration(
-      //                 image: DecorationImage(
-      //                   fit: BoxFit.cover,
-      //                   image: AssetImage('assets/img/bigg_diwali.jpg'),
-      //                 ),
-      //               ),
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/post');
+        },
+        backgroundColor: Color(0xFFE4C804),
+        child: Icon(Icons.edit,color: Colors.white,),
+      ),
     );
   }
 

@@ -13,7 +13,7 @@ class GrideviewMethod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Colors.black,
       body: GridView.builder(
         itemCount: festivalList.length,
         gridDelegate:
@@ -76,19 +76,7 @@ class GrideviewMethod extends StatelessWidget {
           ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //
-      //   },
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.circular(30),
-      //   ),
-      //   backgroundColor: Colors.teal,
-      //   child: const Icon(
-      //     Icons.edit,
-      //     color: Colors.white,
-      //   ),
-      // ),
+
     );
   }
 }

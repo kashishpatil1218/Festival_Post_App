@@ -11,7 +11,7 @@ class _Login_PageState extends State<Login_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -20,7 +20,7 @@ class _Login_PageState extends State<Login_Page> {
                 padding: const EdgeInsets.only(top: 100, right: 100),
                 child: Text(
                   'Welcome\nBack',
-                  style: TextStyle(color: Colors.black, fontSize: 33),
+                  style: TextStyle(color: Color(0xFFE4C804),fontSize: 33),
                 ),
               ),
             ),
@@ -29,14 +29,17 @@ class _Login_PageState extends State<Login_Page> {
               child: Column(
                 children: [
                   TextField(
+                    style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      fillColor: Colors.grey.shade200,
+                      fillColor: Colors.grey.shade900,
                       filled: true,
                       hintText: 'Email',
                      hintStyle: TextStyle(color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade900)),
                       focusedBorder:OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)
                       )
@@ -46,16 +49,19 @@ class _Login_PageState extends State<Login_Page> {
                     height: 30,
                   ),
                   TextField(
+                    style: TextStyle(color: Colors.white),
                     obscureText: true,
                     decoration: InputDecoration(
-                      fillColor: Colors.grey.shade200,
+                      fillColor: Colors.grey.shade900,
                       filled: true,
                       hintText: 'Password',
                       hintStyle: TextStyle(color: Colors.grey),
-                      suffix: Icon(Icons.remove_red_eye_outlined),
+                      suffix: Icon(Icons.remove_red_eye_outlined,color: Colors.white,),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade900)),
                         focusedBorder:OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey)
                         )
@@ -86,7 +92,7 @@ class _Login_PageState extends State<Login_Page> {
                         style: TextStyle(
                           fontSize: 27,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xFF4c505b),
+                          color: Color(0xFFE4C804),
                         ),
                       ),
 
@@ -106,7 +112,7 @@ class _Login_PageState extends State<Login_Page> {
           Navigator.of(context).pushNamed('/start');
         },child: Icon(Icons.arrow_forward,color: Colors.white,),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        backgroundColor:Color(0xFF4c505b),
+        backgroundColor: Color(0xFFE4C804),
       ),
     );
   }

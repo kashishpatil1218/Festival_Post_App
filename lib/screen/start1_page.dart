@@ -13,10 +13,10 @@ class Start1_Page extends StatefulWidget {
 class _Start1_PageState extends State<Start1_Page> {
   final myItems = [
     Image.asset('assets/img/bappa.jpg'),
-    Image.asset('assets/img/navaratri.jpeg'),
-    Image.asset('assets/img/bappa.jpg'),
-    Image.asset('assets/img/bappa.jpg'),
-    Image.asset('assets/img/bappa.jpg'),
+    Image.asset('assets/img/ratri.jpeg'),
+    Image.asset('assets/img/rakhiiiii.jpeg'),
+    Image.asset('assets/img/holi banner.jpeg'),
+    Image.asset('assets/img/diwali.jpeg'),
   ];
   int myCurrentIndex = 0;
 
@@ -52,7 +52,7 @@ class _Start1_PageState extends State<Start1_Page> {
                   dotHeight: 12,
                   dotWidth: 12,
                   dotColor: Colors.grey,
-                  activeDotColor: Colors.blueAccent),
+                  activeDotColor:Color(0xFFE4C804)),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -142,7 +142,7 @@ class _Start1_PageState extends State<Start1_Page> {
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.teal,
+                color:Color(0xFFE4C804),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(

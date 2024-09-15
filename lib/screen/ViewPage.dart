@@ -21,8 +21,11 @@ void initState(){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        leading: Icon(Icons.arrow_back_ios,color: Colors.white,),
+        backgroundColor: Color(0xFFE4C804),
+
         title: Text(
           'Home Page',
           style: TextStyle(color: Colors.white, fontSize: 20),

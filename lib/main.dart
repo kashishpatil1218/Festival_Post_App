@@ -1,7 +1,9 @@
+import 'package:festivalapp/screen/Post_page.dart';
 import 'package:festivalapp/screen/ViewPage.dart';
 import 'package:festivalapp/screen/edit_page.dart';
 import 'package:festivalapp/screen/login_page.dart';
 import 'package:festivalapp/screen/regestre_page.dart';
+import 'package:festivalapp/screen/splash_Page.dart';
 import 'package:festivalapp/screen/start1_page.dart';
 import 'package:flutter/material.dart';
 
@@ -18,11 +20,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes:{
-        '/':(context)=> const Regester_Page(),
+        '/':(context)=> const Splash_Page(),
+        '/rej':(context)=> const Regester_Page(),
         '/login':(context)=> const Login_Page(),
         '/start':(context)=> const  Start1_Page(),
         '/view':(context)=> const  View_Page(),
         '/edit':(context)=> const  Edit_Page(),
+        '/post':(context)=> const  Post_Page(),
 
       },
 
