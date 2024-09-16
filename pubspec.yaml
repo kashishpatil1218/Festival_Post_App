@@ -41,6 +41,8 @@ dependencies:
   image_editor_plus: ^1.0.6
   curved_navigation_bar: ^1.0.6
   image_picker: ^1.1.2
+  floating_draggable_widget: ^2.1.5
+  share_files_and_screenshot_widgets: ^1.0.6
 
 dev_dependencies:
   flutter_test:

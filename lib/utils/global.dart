@@ -1,3 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
 import '../screen/modal/festModal.dart';
 
 List biggFestivalList = [
@@ -17,7 +23,8 @@ List biggFestNameList = [
   'Uttrayan',
   'Ram Navami',
 ];
-// for nearest festival
+String PostImage = '';
+// for nearest festival=
 List nearestFestivalList = [
   {
     'img': 'assets/img/near_navaratri.jpg',
@@ -64,7 +71,7 @@ List templateList = [
   'assets/img/onamtemplate.jpg',
   'assets/image/Rakhitamplate.jpeg',
 ];
-
+int nav=0;
 bool isGrid = false;
 Images? img;
 List FestImgView = [];
@@ -283,3 +290,29 @@ List mainList = [
     'assets/image/Rakhi5.jpeg',
   ], //17
 ];
+
+TextEditingController txtMAil=TextEditingController();
+TextEditingController txtNum=TextEditingController();
+String mail='admin123@gmail.com';
+String num='1253647890';
+
+
+List colorList=[
+  Colors.black,
+  Colors.white,
+  Colors.orange,
+  Colors.yellow,
+  Colors.blue,
+  Colors.grey,
+  Colors.purple,
+  Colors.red,
+  Colors.green,
+  Colors.amber,
+  Colors.brown,
+  Colors.cyan,
+
+];
+
+Color defaultcolor= Colors.black;
+File? _image;
+final picker = ImagePicker();

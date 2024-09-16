@@ -109,7 +109,7 @@ class _Login_PageState extends State<Login_Page> {
       ),
       floatingActionButton: FloatingActionButton(onPressed: 
         () {
-          Navigator.of(context).pushNamed('/start');
+          Navigator.of(context).pushNamed('/nav');
         },child: Icon(Icons.arrow_forward,color: Colors.white,),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         backgroundColor: Color(0xFFE4C804),

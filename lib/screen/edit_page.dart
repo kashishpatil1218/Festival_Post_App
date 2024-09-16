@@ -44,26 +44,26 @@ class _Edit_PageState extends State<Edit_Page> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed('/post');
-        },
-        backgroundColor: Color(0xFFE4C804),
-        child: Icon(Icons.edit,color: Colors.white,),
-      ),
+
     );
   }
 
   Widget imageMethod({required int index, required List postList}) {
     return Padding(
       padding: const EdgeInsets.all(3.0),
-      child: Container(
-        height: 350,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.blueAccent,
-          image: DecorationImage(
-              image: AssetImage(postList[0][index]), fit: BoxFit.cover),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pushNamed('/post');
+          PostImage=postList[0][index];
+        },
+        child: Container(
+          height: 350,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.blueAccent,
+            image: DecorationImage(
+                image: AssetImage(postList[0][index]), fit: BoxFit.cover),
+          ),
         ),
       ),
     );

@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'dart:ui';
 
-import 'package:festivalapp/screen/modal/festModal.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/global.dart';

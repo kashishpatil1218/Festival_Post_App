@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:festivalapp/utils/global.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -52,7 +53,7 @@ class _Start1_PageState extends State<Start1_Page> {
                   dotHeight: 12,
                   dotWidth: 12,
                   dotColor: Colors.grey,
-                  activeDotColor:Color(0xFFE4C804)),
+                  activeDotColor: Color(0xFFE4C804)),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -102,7 +103,9 @@ class _Start1_PageState extends State<Start1_Page> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: EdgeInsets.only(right: 160, top: 10),
                   child: Text(
@@ -110,7 +113,9 @@ class _Start1_PageState extends State<Start1_Page> {
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -128,33 +133,7 @@ class _Start1_PageState extends State<Start1_Page> {
           ],
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(left: 35),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed('/login');
-          },
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed('/view');
-            },
-            child: Container(
-              height: 50,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color:Color(0xFFE4C804),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: Text(
-                  'Get Start >> ',
-                  style: TextStyle(color: Colors.white, fontSize: 17),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+
     );
   }
 
@@ -167,10 +146,11 @@ class _Start1_PageState extends State<Start1_Page> {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.shade700,
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: Offset(2, 3),)
+              color: Colors.grey.shade700,
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(2, 3),
+            )
           ],
           image: DecorationImage(
             image: AssetImage(img),
