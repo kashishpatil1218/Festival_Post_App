@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:js_interop';
-
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'dart:ui';
 import 'package:festivalapp/utils/global.dart';
-import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:share_files_and_screenshot_widgets/share_files_and_screenshot_widgets.dart';
 
@@ -19,7 +17,7 @@ class Post_Page extends StatefulWidget {
 
 class _Post_PageState extends State<Post_Page> {
 
-  GlobalKey imgkey =GlobalKey();
+  GlobalKey imgkey = GlobalKey();
   File? _image;
   final picker = ImagePicker();
 
@@ -36,6 +34,7 @@ class _Post_PageState extends State<Post_Page> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +44,7 @@ class _Post_PageState extends State<Post_Page> {
           onPressed: () {
             Navigator.of(context).pop();
           },
+
           icon: Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
@@ -62,54 +62,57 @@ class _Post_PageState extends State<Post_Page> {
           children: [
             Padding(
               padding: const EdgeInsets.all(25),
-              child: Container(
-                height: 320,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(PostImage),
+              child: RepaintBoundary(
+                key: imgkey,
+                child: Container(
+                  height: 320,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(PostImage),
+                    ),
                   ),
-                ),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            color: Colors.white, shape: BoxShape.circle),
-                        child: (_image != null)
-                            ? Image.file(
-                          _image!,
-                          fit: BoxFit.cover,
-                        )
-                            : Image.asset('assets/image/logo.jpg'),
+                  child: Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                              color: Colors.white, shape: BoxShape.circle),
+                          child: (_image != null)
+                              ? Image.file(
+                            _image!,
+                            fit: BoxFit.cover,
+                          )
+                              : Image.asset('assets/image/logo.jpg'),
+                        ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            mail,
-                            style: TextStyle(
-                                color: defaultcolor, fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            num,
-                            style: TextStyle(
-                                color: defaultcolor, fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              mail,
+                              style: TextStyle(
+                                  color: defaultcolor, fontSize: 10,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              num,
+                              style: TextStyle(
+                                  color: defaultcolor, fontSize: 10,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -245,7 +248,15 @@ class _Post_PageState extends State<Post_Page> {
                           color: Color(0xFFE4C804),
                         ),
                         child: IconButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              RenderRepaintBoundary boundary = imgkey.currentContext!
+                                  .findRenderObject() as RenderRepaintBoundary;
+                              final image = await boundary.toImage();
+                              final byteData =
+                              await image.toByteData(format: ImageByteFormat.png);
+                              final imgIntList = byteData!.buffer.asUint8List();
+                              await ImageGallerySaver.saveImage(imgIntList);
+                              print('=======================================================');
 
                             },
                             icon: Icon(
@@ -265,9 +276,9 @@ class _Post_PageState extends State<Post_Page> {
                             RenderRepaintBoundary boundry = imgkey
                                 .currentContext!
                                 .findRenderObject()! as RenderRepaintBoundary;
-                                ShareFilesAndScreenshotWidgets().shareScreenshot(
-                              imgkey,500,'Image','festival.png','image/png');
-
+                            ShareFilesAndScreenshotWidgets().shareScreenshot(
+                                imgkey, 500, 'Image', 'festival.png',
+                                'image/png');
                           },
                           icon: Icon(
                             Icons.share,
